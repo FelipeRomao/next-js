@@ -13,6 +13,10 @@ interface CategoryProps {
 export default function Category({ products }: CategoryProps) {
   const router = useRouter();
 
+  if (router.isFallback) {
+    return <p>Carregando...</p>;
+  }
+
   return (
     <ul>
       {products.map((product) => (
@@ -34,7 +38,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
@@ -50,5 +54,6 @@ export const getStaticProps: GetStaticProps<CategoryProps> = async (
 
   return {
     props: { products },
+    revalidate: 60,
   };
 };
