@@ -5,7 +5,7 @@ const AddToCartModal = dynamic(() => import("@/components/AddToCartModal"), {
   loading: () => <p>Loading...</p>,
 });
 
-export default function Products() {
+export default function Product() {
   const [isAddToCartModalVisible, setIsAddToCartModalVisible] = useState(false);
 
   function handleAddToCart() {
